@@ -1,0 +1,43 @@
+buildscript {
+	ext {
+		springBootVersion = '1.5.12.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+
+group = 'itsstm.taller'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+
+
+dependencies {
+ // tag::jetty[]
+    compile("org.springframework.boot:spring-boot-starter-web") {
+        exclude module: "spring-boot-starter-tomcat"
+    }
+    compile("org.springframework.boot:spring-boot-starter-jetty")
+    // end::jetty[]
+    // tag::actuator[]
+    
+   //compile('org.springframework.boot:spring-boot-starter-data-jpa')
+	// https://mvnrepository.com/artifact/mysql/mysql-connector-java
+	//compile group: 'mysql', name: 'mysql-connector-java', version: '5.1.46'
+	//compile files('./lib/mysql-connector-java-5.0.8-bin.jar')
+	// https://mvnrepository.com/artifact/com.mchange/c3p0
+	compile group: 'com.mchange', name: 'c3p0', version: '0.9.5'
+	
+
+}
