@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import itssmt.taller.modelo.Alumno;
 import itssmt.taller.modelo.GenericResponse;
+import itssmt.taller.modelo.Profesor;
 
 @RestController
 @RequestMapping("/rest")
@@ -50,6 +51,23 @@ public class AlumnoController {
 		return response;
 		
 	}
+	
+	@PostMapping(value="/saveProfesor")
+	public GenericResponse<Profesor> saveProfesor(@RequestBody Profesor profesor){
+		GenericResponse<Profesor> response = new GenericResponse<>();
+		
+		
+		response.setCode(200);
+		response.setMessage("El profesor "+profesor.getNombre()+ " se guardo correctamente.");
+		response.setResponse(profesor);
+		
+		return response;
+		
+	}
+	
+	
+	
+	
 	
 	
 	
