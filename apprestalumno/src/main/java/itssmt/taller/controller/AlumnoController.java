@@ -3,6 +3,7 @@ package itssmt.taller.controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -39,6 +40,27 @@ public class AlumnoController {
 	}
 	
 	
+	@GetMapping(value="/validaApellido")
+	public String validaApellidoProf(@RequestParam(value="nombre",required=false) String tuNombre,
+			@RequestParam(value="apellido",required=true) String tuApellido, @RequestHeader(value="Titulo", required=true) String tuTitulo){
+		
+	
+		
+		if(tuApellido.equalsIgnoreCase("Gonzalez")){
+			
+			return "Bienvenido "+tuTitulo +" "+tuApellido;
+			
+		}else{
+			return "No se encuentra en la base de datos "+ tuTitulo + " " + tuApellido;
+		}
+		
+		
+	}
+	
+	
+	
+	
+	
 	@PostMapping(value="/saveAlumno")
 	public GenericResponse<Alumno> saveAlumno(@RequestBody Alumno alumno){
 		GenericResponse<Alumno> response = new GenericResponse<>();
@@ -64,6 +86,8 @@ public class AlumnoController {
 		return response;
 		
 	}
+	
+
 	
 	
 	
