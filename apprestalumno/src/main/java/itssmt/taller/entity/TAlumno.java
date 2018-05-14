@@ -15,6 +15,7 @@ public class TAlumno implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idAlumno;
 
 	private String apellidos;

@@ -2,13 +2,19 @@ package itssmt.taller.modelo;
 
 public class Alumno {
 	
-	
+	private int idAlumno;
 	private String nombre;
 	private String apellidos;
 	private int idMaestro;
 	
 	
 	
+	public int getIdAlumno() {
+		return idAlumno;
+	}
+	public void setIdAlumno(int idAlumno) {
+		this.idAlumno = idAlumno;
+	}
 	public String getNombre() {
 		return nombre;
 	}

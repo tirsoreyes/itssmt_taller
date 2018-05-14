@@ -1,12 +1,21 @@
 package itssmt.taller.modelo;
 
+import java.util.List;
+
 public class Profesor {
 	
 private int idProfesor;
 private String nombre;
 private String apellidos;
+private List<Alumno> alumnos;
 
 
+public List<Alumno> getAlumnos() {
+	return alumnos;
+}
+public void setAlumnos(List<Alumno> alumnos) {
+	this.alumnos = alumnos;
+}
 public int getIdProfesor() {
 	return idProfesor;
 }
