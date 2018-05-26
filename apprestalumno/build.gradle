@@ -45,6 +45,13 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-actuator')
 	compile group: 'commons-dbcp', name: 'commons-dbcp', version: '1.4'
 	
+	// retrofit 
+	 	 compile 'com.squareup.retrofit2:retrofit:2.3.0'
+	 // JSON Parsing
+	compile 'com.google.code.gson:gson:2.8.1'
+	compile 'com.squareup.retrofit2:converter-gson:2.3.0'
+    
+	
 	
 	
 

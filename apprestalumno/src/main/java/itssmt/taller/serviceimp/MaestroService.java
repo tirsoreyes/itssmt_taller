@@ -1,5 +1,6 @@
 package itssmt.taller.serviceimp;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +15,9 @@ import itssmt.taller.entity.TMaestro;
 import itssmt.taller.modelo.Alumno;
 import itssmt.taller.modelo.GenericResponse;
 import itssmt.taller.modelo.Profesor;
+import itssmt.taller.retrofit.AccountMSService;
 import itssmt.taller.service.IMaestroService;
+import retrofit2.Response;
 
 @Service
 public class MaestroService implements IMaestroService {
@@ -22,6 +25,8 @@ public class MaestroService implements IMaestroService {
 	@Autowired
 	ITMaestroDao maestroDao;
 	
+	
+	@Autowired AccountMSService retroService;
 	
 	@Override
 	public String save(Profesor maestro) {
@@ -31,7 +36,17 @@ public class MaestroService implements IMaestroService {
 		tMaestro.setNombre(maestro.getNombre());
 		maestroDao.save(tMaestro);
 		
-		
+		Alumno alumno= new Alumno();
+		try {
+			Response<GenericResponse<String>> respon= retroService.login(alumno).execute();
+			
+			
+			respon.code();
+			respon.message();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		
 		return tMaestro==null?"No se pudo guardar el profesor":"Se almaceno el profesor";
